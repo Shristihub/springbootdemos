@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Built-By: SPRIYA MATHAN
+Build-Jdk: 10.0.1
+Implementation-Title: SpringMovieJDBC
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.movieapp
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: http://projects.spring.io/spring-boot/SpringMovieJ
+ PA/
+Created-By: Maven Integration for Eclipse
+
