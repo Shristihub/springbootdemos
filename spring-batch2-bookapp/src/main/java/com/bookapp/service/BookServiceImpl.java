@@ -38,25 +38,22 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public List<Book> getAll() {
-		return (List<Book>) bookDAO.findAll();
+		return bookDAO.findAll();
 	}
 
 	@Override
 	public List<Book> getByAuthor(String author) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDAO.findByAuthor(author);
 	}
 
 	@Override
 	public List<Book> getByCategory(String category) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDAO.readByCategory(category);
 	}
 
 	@Override
 	public List<Book> getByPrice(double price) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDAO.findByPriceLessThan(price);
 	}
 
 	

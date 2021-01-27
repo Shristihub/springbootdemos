@@ -21,14 +21,19 @@ public class SpringBatch2BookappApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		bookService.addBook(new Book("Miracl","Hal","Self",1800));
+		bookService.addBook(new Book("Skull Daggery","Derek","Fiction",450));
 		bookService.getAll().forEach(System.out::println);
 		System.out.println();
 		
 		Book book = bookService.getById(1);
 		System.out.println(book);
+			
 		
-//		bookService.getByAuthor("Steve").forEach((book)->System.out.println(book));
+		bookService.getByAuthor("Steve").forEach((nbook)->System.out.println(book));
+		System.out.println();
+		bookService.getByCategory("Self").forEach(System.out::println);
+		System.out.println();
+		bookService.getByPrice(1000).forEach(System.out::println);
 		System.out.println();
 		
 	}
