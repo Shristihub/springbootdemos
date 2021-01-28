@@ -4,16 +4,21 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.bookapp.dao.BookDAO;
+import com.bookapp.dao.BookRepository;
+import com.bookapp.dao.BookSortRepository;
 import com.bookapp.model.Book;
 
 @Service
 public class BookServiceImpl implements BookService {
 
 	@Autowired
-	BookDAO bookDAO;
+	BookRepository bookDAO;
+	
+	@Autowired
+	BookSortRepository bookSortRepo;
 	
 	@Override
 	public void addBook(Book book) {
@@ -38,12 +43,20 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public List<Book> getAll() {
-		return bookDAO.findAll();
+//		return bookDAO.findAll();
+		return bookDAO.findAll(Sort.by(Sort.Direction.ASC,"title"));
+	}
+	
+	@Override
+	public List<Book> getSortedByTitle(String author) {
+		return bookSortRepo.findByAuthor(author, Sort.by("title","price").descending());
 	}
 
 	@Override
 	public List<Book> getByAuthor(String author) {
-		return bookDAO.findByAuthor(author);
+//		return bookDAO.findByAuthor(author);
+//		return bookDAO.findByAuthorStartingWith(author);
+		return bookDAO.findByAuthorPrefix(author);
 	}
 
 	@Override
@@ -56,5 +69,12 @@ public class BookServiceImpl implements BookService {
 		return bookDAO.findByPriceLessThan(price);
 	}
 
-	
+	@Override
+	public List<Book> findByCatPrice(String category, double price) {
+		return bookDAO.findByCatPrice(category, price);
+	}
+
+	public List<Book> findByCategoryAuthor(String category, String author){
+		return bookDAO.findByCategoryAuthor(category, author);
+	}
 }

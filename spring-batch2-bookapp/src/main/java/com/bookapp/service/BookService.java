@@ -14,5 +14,10 @@ public interface BookService {
 	List<Book> getByCategory(String category);
 	List<Book> getByPrice(double price);
 	
+	List<Book> findByCatPrice(String category, double price);
+	List<Book> findByCategoryAuthor(String category, String author);
+	
+	public List<Book> getSortedByTitle(String author) ;
+	
 
 }

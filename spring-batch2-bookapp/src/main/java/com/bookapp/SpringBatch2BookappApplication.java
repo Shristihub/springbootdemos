@@ -21,21 +21,25 @@ public class SpringBatch2BookappApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		bookService.addBook(new Book("Skull Daggery","Derek","Fiction",450));
+//		bookService.addBook(new Book("Skull Daggery","Derek","Fiction",450));
 		bookService.getAll().forEach(System.out::println);
 		System.out.println();
-		
-		Book book = bookService.getById(1);
-		System.out.println(book);
-			
-		
-		bookService.getByAuthor("Steve").forEach((nbook)->System.out.println(book));
+//		
+//		Book book = bookService.getById(1);
+//		System.out.println(book);
+//			
+//		
+//		bookService.getByAuthor("M").forEach((nbook)->System.out.println(nbook));
 		System.out.println();
-		bookService.getByCategory("Self").forEach(System.out::println);
-		System.out.println();
-		bookService.getByPrice(1000).forEach(System.out::println);
-		System.out.println();
+//		bookService.getByCategory("Self").forEach(System.out::println);
+//		System.out.println();
+//		bookService.getByPrice(1000).forEach(System.out::println);
+//		System.out.println();
 		
+//		bookService.findByCatPrice("Self",1000.0).forEach((nbook)->System.out.println(nbook));
+//		bookService.findByCategoryAuthor("Self","Merlin").forEach((nbook)->System.out.println(nbook));
+		
+		bookService.getSortedByTitle("Merlin").forEach((nbook)->System.out.println(nbook));
 	}
 
 }
