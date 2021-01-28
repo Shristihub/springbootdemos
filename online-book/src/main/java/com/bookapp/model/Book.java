@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -14,6 +15,11 @@ import lombok.NoArgsConstructor;
 @Entity
 //@Table(name = "Bookdetails")
 @NoArgsConstructor
+
+@NamedQuery(name="findByCat",
+			query= "From Book b where b.category <?1")
+@NamedQuery(name="findByTitle",
+			query= "From Book b where LENGTH(b.title) <?1")
 public class Book {
 	private String title;
 	private String author;

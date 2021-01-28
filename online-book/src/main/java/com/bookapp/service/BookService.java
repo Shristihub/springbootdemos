@@ -13,5 +13,9 @@ public interface BookService {
 	void deleteBook(int bookid);
 	List<Book> getByPrice(double price);
 	List<Book> getByAuthCat(String author,String category);
+	List<Book> getByTitleLength(int length);
+	
+	void updateBook(int bookid, double price);
+	public List<Book> getBooksByPage(int pageNum,int count);
 }
 
