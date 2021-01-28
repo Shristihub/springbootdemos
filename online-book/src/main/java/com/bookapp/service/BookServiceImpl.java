@@ -34,12 +34,17 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	public List<Book> getByAuthor(String author) {
-		return bookDAO.findByAuthor(author);
+//		return bookDAO.findByAuthor(author);
+		return bookDAO.findByAuthStarting(author);
 	}
 
 	@Override
 	public List<Book> getByCategory(String category) {
 		return bookDAO.readByCategory(category);
+	}
+	@Override
+	public List<Book> getByAuthCat(String author,String category) {
+		return bookDAO.findByAuthCat(author, category);
 	}
 
 	@Override

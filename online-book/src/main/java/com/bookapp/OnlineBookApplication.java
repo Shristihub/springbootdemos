@@ -28,7 +28,10 @@ public class OnlineBookApplication implements CommandLineRunner {
 //		bookService.getByAuthor("Kevin").forEach(System.out::println);
 //		System.out.println();
 //		bookService.getByCategory("Self").forEach(System.out::println);
-		bookService.getByPrice(1200.0).forEach(System.out::println);
+//		bookService.getByPrice(1200.0).forEach(System.out::println);
+		
+		bookService.getByAuthCat("Kathy","Self").forEach(System.out::println);
+//		bookService.getByAuthor("K").forEach(System.out::println);
 	}
 
 }

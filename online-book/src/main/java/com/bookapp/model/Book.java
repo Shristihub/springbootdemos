@@ -30,6 +30,24 @@ public class Book {
 		this.category = category;
 		this.price = price;
 	}
-
-	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
