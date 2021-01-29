@@ -23,13 +23,24 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public List<Student> getStudentByCity(String city) {
-		return studentRepo.findByAddressCity(city);
+//		return studentRepo.findByAddressCity(city);
+		return studentRepo.findByGadgetsGadgetName(city);
 	}
 
 	@Override
 	@Transactional
 	public List<Student> getAllStudents() {
 		return studentRepo.findAll();
+	}
+
+	@Override
+	public List<Student> getByCourseName(String coursename) {
+		return studentRepo.findByCourseName(coursename);
+	}
+
+	@Override
+	public List<Student> getByCourseGadget(String coursename, String gadget) {
+		return studentRepo.findByCourseGadgets(coursename, gadget);
 	}
 	
 

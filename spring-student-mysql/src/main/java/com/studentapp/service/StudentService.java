@@ -9,5 +9,7 @@ public interface StudentService {
 	void addStudent(Student student);
 	List<Student> getStudentByCity(String city);
 	List<Student> getAllStudents();
+	List<Student> getByCourseName(String name);
+	List<Student> getByCourseGadget(String cname, String gadget);
 	
 }

@@ -14,6 +14,7 @@ import com.studentapp.model.Address;
 import com.studentapp.model.Courses;
 import com.studentapp.model.Gadgets;
 import com.studentapp.model.Student;
+import com.studentapp.service.CourseService;
 import com.studentapp.service.StudentService;
 
 @SpringBootApplication
@@ -25,18 +26,25 @@ public class SpringStudentMysqlApplication implements CommandLineRunner{
 	
 	@Autowired
 	StudentService studentService;
+	
+	@Autowired
+	CourseService courseService;
 	@Override
 	public void run(String... args) throws Exception {
-//		Address address= new Address(12,"Bangalore","Kar");		
-//		List<Gadgets> gadgets = Arrays.asList(new Gadgets(53,"Mobile","A123"),new Gadgets(54,"Xbox","T430"));
+//		Address address= new Address(13,"Bangalore","Kar");		
+//		List<Gadgets> gadgets = Arrays.asList(new Gadgets(55,"Headphones","K90"),new Gadgets(56,"Laptop","T430"));
 //		Set<Gadgets> gadgetList = new HashSet<>(gadgets);
+////		
+////		Courses course1 = new Courses(4,"Microservice",2000);
+////		Courses course2 = new Courses(5,"Angular",1200);
+////		Courses course3 = new Courses(6,"CSS",3000);
 //		
-//		Courses course1 = new Courses(4,"Microservice",2000);
-//		Courses course2 = new Courses(5,"Angular",1200);
-//		Courses course3 = new Courses(6,"CSS",3000);
-//		Set<Courses> courseList = new HashSet<>(Arrays.asList(course1,course2,course3));
+//		Courses course1 = courseService.getById(4);
+//		Courses course2 = courseService.getById(5);
 //		
-//		Student student =new Student(102,"Revanth",address,gadgetList,courseList);
+//		Set<Courses> courseList = new HashSet<>(Arrays.asList(course1,course2));
+//		
+//		Student student =new Student(103,"Kumaran",address,gadgetList,courseList);
 //		studentService.addStudent(student);
 //		
 //		studentService.getAllStudents().forEach((nstudent)->{
@@ -45,7 +53,23 @@ public class SpringStudentMysqlApplication implements CommandLineRunner{
 //			System.out.println(nstudent.getAddress().getCity());
 //		});
 //		
-		studentService.getStudentByCity("Bangalore").forEach(System.out::println);
+		studentService.getStudentByCity("Mobile").forEach(System.out::println);
+//		
+//		studentService.getByCourseName("Angular").forEach((nstudent)->{
+//			System.out.println(nstudent.getName());
+////			nstudent.getCourses().forEach((course)->System.out.print(course.getCourseName())));
+//			System.out.println(nstudent.getAddress().getCity());
+//			Set<Gadgets> gadgetsList  = nstudent.getGadgets();
+//			gadgetsList.forEach(System.out::println);
+//		});
+//		studentService.getByCourseGadget("Angular", "Mobile").forEach((nstudent)->{
+//			System.out.println(nstudent.getName());
+////			nstudent.getCourses().forEach((course)->System.out.print(course.getCourseName())));
+//			System.out.println(nstudent.getAddress().getCity());
+//			Set<Gadgets> gadgetsList  = nstudent.getGadgets();
+//			gadgetsList.forEach(System.out::println);
+//			System.out.println(nstudent.getCourses());
+//		});
 		
 	}
 }
