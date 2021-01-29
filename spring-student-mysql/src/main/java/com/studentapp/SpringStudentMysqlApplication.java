@@ -1,25 +1,31 @@
 package com.studentapp;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.studentapp.model.Address;
 import com.studentapp.model.Courses;
-import com.studentapp.model.Gadgets;
-import com.studentapp.model.Student;
 import com.studentapp.service.CourseService;
 import com.studentapp.service.GadgetService;
 import com.studentapp.service.StudentService;
 
 @SpringBootApplication
 public class SpringStudentMysqlApplication implements CommandLineRunner{
+	
+	String greetings;
+	
+
+	public String getGreetings() {
+		return greetings;
+	}
+	@Value("${message}")
+	public void setGreetings(String greetings) {
+		this.greetings = greetings;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringStudentMysqlApplication.class, args);
@@ -84,5 +90,7 @@ public class SpringStudentMysqlApplication implements CommandLineRunner{
 		gadgetService.findByStudentName("Rohan").forEach((gadget)->{
 			System.out.println(gadget.getGadgetName()+""+gadget.getGadgetModel());
 		});
+		
+		System.out.println(greetings);
 	}
 }
