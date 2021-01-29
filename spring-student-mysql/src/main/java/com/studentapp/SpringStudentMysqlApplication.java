@@ -15,6 +15,7 @@ import com.studentapp.model.Courses;
 import com.studentapp.model.Gadgets;
 import com.studentapp.model.Student;
 import com.studentapp.service.CourseService;
+import com.studentapp.service.GadgetService;
 import com.studentapp.service.StudentService;
 
 @SpringBootApplication
@@ -29,6 +30,10 @@ public class SpringStudentMysqlApplication implements CommandLineRunner{
 	
 	@Autowired
 	CourseService courseService;
+	
+	@Autowired
+	GadgetService gadgetService;
+	
 	@Override
 	public void run(String... args) throws Exception {
 //		Address address= new Address(13,"Bangalore","Kar");		
@@ -47,14 +52,14 @@ public class SpringStudentMysqlApplication implements CommandLineRunner{
 //		Student student =new Student(103,"Kumaran",address,gadgetList,courseList);
 //		studentService.addStudent(student);
 //		
-//		studentService.getAllStudents().forEach((nstudent)->{
-//			System.out.println(nstudent.getName());
-////			nstudent.getCourses().forEach((course)->System.out.print(course.getCourseName())));
-//			System.out.println(nstudent.getAddress().getCity());
-//		});
-//		
+		studentService.getAllStudents().forEach((nstudent)->{
+			System.out.println(nstudent.getName());
+//			nstudent.getCourses().forEach((course)->System.out.print(course.getCourseName())));
+			System.out.println(nstudent.getAddress().getCity());
+		});
+		System.out.println();
 		studentService.getStudentByCity("Mobile").forEach(System.out::println);
-//		
+		System.out.println();
 //		studentService.getByCourseName("Angular").forEach((nstudent)->{
 //			System.out.println(nstudent.getName());
 ////			nstudent.getCourses().forEach((course)->System.out.print(course.getCourseName())));
@@ -71,5 +76,13 @@ public class SpringStudentMysqlApplication implements CommandLineRunner{
 //			System.out.println(nstudent.getCourses());
 //		});
 		
+		List<Courses> courseList = courseService.findByStudent("Rohan");
+		for (Courses courses : courseList) {
+			System.out.println(courses.getCourseName()+" "+courses.getCost());
+		}
+		
+		gadgetService.findByStudentName("Rohan").forEach((gadget)->{
+			System.out.println(gadget.getGadgetName()+""+gadget.getGadgetModel());
+		});
 	}
 }

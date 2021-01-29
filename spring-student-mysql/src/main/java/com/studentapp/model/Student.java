@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -21,6 +23,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
+@NamedEntityGraph(
+		name="student.graph",
+		attributeNodes= {
+				@NamedAttributeNode("address"),
+				@NamedAttributeNode("gadgets"),
+				@NamedAttributeNode("courses")
+		}
+		)
+
 public class Student {
 
 	@Id 
@@ -30,11 +41,12 @@ public class Student {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="address_id")
 	Address address;
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	
+	@OneToMany(cascade = CascadeType.ALL)//,fetch = FetchType.EAGER)
 	@JoinColumn(name="student_id")
 	Set<Gadgets> gadgets;
 	
-	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL)//,fetch = FetchType.EAGER)
 	@JoinTable(name="student_courses",
 				joinColumns = @JoinColumn(name="student_id"),
 				inverseJoinColumns = @JoinColumn(name="courses_id")
