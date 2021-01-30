@@ -12,6 +12,7 @@ import com.studentapp.dao.StudentRepository;
 import com.studentapp.model.Student;
 
 @Service
+@Profile("prod")
 public class StudentServiceImpl implements StudentService{
 
 	@Autowired
@@ -41,6 +42,19 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public List<Student> getByCourseGadget(String coursename, String gadget) {
 		return studentRepo.findByCourseGadgets(coursename, gadget);
+	}
+
+	@Override
+	public void updateStudent(Integer id, String name) {
+		Student stud = studentRepo.findById(id).get();
+		stud.setName(name);
+		studentRepo.save(stud);
+		
+	}
+
+	@Override
+	public void deleteStudent(Integer id) {
+		studentRepo.deleteById(id);
 	}
 	
 

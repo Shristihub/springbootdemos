@@ -4,7 +4,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EntityListeners;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -13,6 +13,8 @@ import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.studentapp.service.StudentAuditListener;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,34 +25,58 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@NamedEntityGraph(
-		name="student.graph",
-		attributeNodes= {
-				@NamedAttributeNode("address"),
-				@NamedAttributeNode("gadgets"),
-				@NamedAttributeNode("courses")
-		}
-		)
-
+@NamedEntityGraph(name = "student.graph", attributeNodes = { @NamedAttributeNode("address"),
+		@NamedAttributeNode("gadgets"), @NamedAttributeNode("courses") })
+@EntityListeners(value = StudentAuditListener.class)
 public class Student {
 
-	@Id 
+	@Id
 	private Integer studentId;
 	private String name;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="address_id")
-	Address address;
-	
-	@OneToMany(cascade = CascadeType.ALL)//,fetch = FetchType.EAGER)
-	@JoinColumn(name="student_id")
-	Set<Gadgets> gadgets;
-	
-	@ManyToMany(cascade = CascadeType.ALL)//,fetch = FetchType.EAGER)
-	@JoinTable(name="student_courses",
-				joinColumns = @JoinColumn(name="student_id"),
-				inverseJoinColumns = @JoinColumn(name="courses_id")
-			)
-	Set<Courses> courses;
-}
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id")
+	Address address;
+
+	@OneToMany(cascade = CascadeType.ALL) // ,fetch = FetchType.EAGER)
+	@JoinColumn(name = "student_id")
+	Set<Gadgets> gadgets;
+
+	@ManyToMany(cascade = CascadeType.ALL) // ,fetch = FetchType.EAGER)
+	@JoinTable(name = "student_courses", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "courses_id"))
+	Set<Courses> courses;
+
+//	@PrePersist
+//	public void beforeInserting() {
+//		audit("before", "inserting");
+//	}
+//
+//	@PostPersist
+//	public void afterInserting() {
+//		audit("after", "inserting");
+//	}
+//
+//	@PreUpdate
+//	public void beforeUpdating() {
+//		audit("before", "updating");
+//	}
+//
+//	@PostUpdate
+//	public void afterUpdating() {
+//		audit("after", "updating");
+//	}
+//
+//	@PreRemove
+//	public void beforeRemoving() {
+//		audit("before", "removing");
+//	}
+//
+//	@PostRemove
+//	public void afterRemoving() {
+//		audit("after", "removing");
+//	}
+//
+//	public void audit(String type, String operation) {
+//		System.out.println(type + " " + operation);
+//	}
+}

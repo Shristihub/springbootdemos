@@ -12,11 +12,13 @@ import javax.persistence.NamedEntityGraph;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
+@ToString(exclude = {"courseId","students"})
 @NamedEntityGraph(
 		name="courses.student.graph",
 		attributeNodes = {
@@ -37,10 +39,7 @@ public class Courses {
 		this.courseName = courseName;
 		this.cost = cost;
 	}
-	@Override
-	public String toString() {
-		return "Courses [courseName=" + courseName + ", cost=" + cost + "]";
-	}
+	
 
 	
 	
