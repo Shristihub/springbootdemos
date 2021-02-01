@@ -21,8 +21,8 @@ public class Book {
 
 	private String title;
 	@Id
-	@GeneratedValue(generator = "booksequence", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "booksequence",sequenceName = "book_seq",allocationSize = 1 )
+//	@GeneratedValue(generator = "booksequence", strategy = GenerationType.AUTO)
+	//@SequenceGenerator(name = "booksequence",sequenceName = "book_seq",allocationSize = 100 )
 	private Integer bookid;
 	private String author;
 	private String category;

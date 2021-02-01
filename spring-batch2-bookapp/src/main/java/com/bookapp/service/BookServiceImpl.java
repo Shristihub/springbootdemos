@@ -23,10 +23,6 @@ public class BookServiceImpl implements BookService {
 	@Autowired
 	BookSortRepository bookSortRepo;
 	
-	@Autowired
-	QueryWrapper wrapper;
-	
-	
 	@Override
 	public void addBook(Book book) {
 		bookDAO.save(book);
