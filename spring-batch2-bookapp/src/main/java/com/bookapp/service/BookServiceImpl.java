@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.bookapp.dao.BookInfo;
 import com.bookapp.dao.BookRepository;
 import com.bookapp.dao.BookSortRepository;
 import com.bookapp.model.Book;
@@ -19,6 +22,10 @@ public class BookServiceImpl implements BookService {
 	
 	@Autowired
 	BookSortRepository bookSortRepo;
+	
+	@Autowired
+	QueryWrapper wrapper;
+	
 	
 	@Override
 	public void addBook(Book book) {
@@ -40,11 +47,16 @@ public class BookServiceImpl implements BookService {
 			return null;
 		
 	}
-
+	
+//	
+	
 	@Override
 	public List<Book> getAll() {
 //		return bookDAO.findAll();
-		return bookDAO.findAll(Sort.by(Sort.Direction.ASC,"title"));
+		//return bookDAO.findAll(Sort.by(Sort.Direction.ASC,"title"));
+		Pageable firstPage = PageRequest.of(0,5, Sort.by("title").descending());
+		return bookDAO.findAll(firstPage).toList();
+		
 	}
 	
 	@Override
@@ -65,6 +77,13 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
+	public List<Book> getCatByPages(String category) {
+		Pageable firstPage = PageRequest.of(1,5);
+		return bookSortRepo.readByCategory(category,firstPage);
+	}
+
+
+	@Override
 	public List<Book> getByPrice(double price) {
 		return bookDAO.findByPriceLessThan(price);
 	}
@@ -76,5 +95,10 @@ public class BookServiceImpl implements BookService {
 
 	public List<Book> findByCategoryAuthor(String category, String author){
 		return bookDAO.findByCategoryAuthor(category, author);
+	}
+
+	@Override
+	public List<BookInfo> getAllCols() {
+		return bookSortRepo.findBy(Sort.by("title").descending());
 	}
 }

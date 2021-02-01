@@ -22,7 +22,7 @@ public class SpringBatch2BookappApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 
 //		bookService.addBook(new Book("Skull Daggery","Derek","Fiction",450));
-		bookService.getAll().forEach(System.out::println);
+//		bookService.getAll().forEach(System.out::println);
 		System.out.println();
 //		
 //		Book book = bookService.getById(1);
@@ -39,7 +39,31 @@ public class SpringBatch2BookappApplication implements CommandLineRunner{
 //		bookService.findByCatPrice("Self",1000.0).forEach((nbook)->System.out.println(nbook));
 //		bookService.findByCategoryAuthor("Self","Merlin").forEach((nbook)->System.out.println(nbook));
 		
-		bookService.getSortedByTitle("Merlin").forEach((nbook)->System.out.println(nbook));
+//		bookService.getSortedByTitle("Merlin").forEach((nbook)->System.out.println(nbook));
+//		bookService.getCatByPages("Self").forEach((nbook)->System.out.println(nbook));
+		
+//		bookService.getAllCols().forEach((bookInfo)->System.out.println(bookInfo.getTitle()));
+//		System.out.println();
+//		bookService.getAllCols().forEach((bookInfo)->System.out.println(bookInfo.getAuthor()));
+		
+//		bookService.getAllCols().forEach((bookInfo)->System.out.println(bookInfo.getTitleAuthor()));
+//		bookService.getAllCols().forEach((bookInfo)->
+//		      System.out.println(bookInfo.getLabeledTitleAuthor("Title","Author")));
+//		bookService.getAllCols().forEach((bookInfo)->
+//	      System.out.println(bookInfo.displayBook()));
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }

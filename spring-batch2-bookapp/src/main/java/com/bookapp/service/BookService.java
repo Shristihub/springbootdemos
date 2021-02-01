@@ -2,6 +2,7 @@ package com.bookapp.service;
 
 import java.util.List;
 
+import com.bookapp.dao.BookInfo;
 import com.bookapp.model.Book;
 
 public interface BookService {
@@ -18,6 +19,9 @@ public interface BookService {
 	List<Book> findByCategoryAuthor(String category, String author);
 	
 	public List<Book> getSortedByTitle(String author) ;
+	public List<Book> getCatByPages(String category);
 	
-
+	
+	List<BookInfo> getAllCols();
+	
 }
