@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -14,7 +13,8 @@ import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.studentapp.service.StudentAuditListener;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,8 +27,9 @@ import lombok.NoArgsConstructor;
 
 @NamedEntityGraph(name = "student.graph", attributeNodes = { @NamedAttributeNode("address"),
 		@NamedAttributeNode("gadgets"), @NamedAttributeNode("courses") })
-@EntityListeners(value = StudentAuditListener.class)
-public class Student {
+//@EntityListeners(value = StudentAuditListener.class)
+@Audited
+public class Student {// extends Auditable<String>{
 
 	@Id
 	private Integer studentId;
@@ -40,6 +41,7 @@ public class Student {
 
 	@OneToMany(cascade = CascadeType.ALL) // ,fetch = FetchType.EAGER)
 	@JoinColumn(name = "student_id")
+	@NotAudited
 	Set<Gadgets> gadgets;
 
 	@ManyToMany(cascade = CascadeType.ALL) // ,fetch = FetchType.EAGER)

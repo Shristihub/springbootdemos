@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import com.studentapp.model.Address;
 import com.studentapp.model.Courses;
@@ -20,6 +21,7 @@ import com.studentapp.service.GadgetService;
 import com.studentapp.service.StudentService;
 
 @SpringBootApplication
+@EnableJpaAuditing
 public class SpringStudentMysqlApplication implements CommandLineRunner{
 	
 	String greetings;
@@ -48,24 +50,24 @@ public class SpringStudentMysqlApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		Address address= new Address(15,"Chennai","Kar");		
-		List<Gadgets> gadgets = Arrays.asList(new Gadgets(59,"Headphones","K90"),new Gadgets(60,"Laptop","T430"));
+		Address address= new Address(18,"Chennai","Kar");		
+		List<Gadgets> gadgets = Arrays.asList(new Gadgets(75,"Headphones","K90"),new Gadgets(76,"Laptop","T430"));
 		Set<Gadgets> gadgetList = new HashSet<>(gadgets);
 //		
-		Courses course1 = new Courses(7,"HTML",2000);
-		Courses course2 = new Courses(8,"Python",1200);
-		Courses course3 = new Courses(9,"ML",3000);
+		Courses course1 = new Courses(11,"AwS",2000);
+		Courses course2 = new Courses(12,"azure",1200);
+//		Courses course3 = new Courses(9,"ML",3000);
 		
-//		Courses course1 = courseService.getById(1);
-//		Courses course2 = courseService.getById(2);
+//		Courses course1 = courseService.getById(6);
+//		Courses course2 = courseService.getById(8);
 		
 		Set<Courses> courseList = new HashSet<>(Arrays.asList(course1,course2));
 		
-		Student student =new Student(105,"Jack",address,gadgetList,courseList);
+		Student student =new Student(110,"Sasi",address,gadgetList,courseList);
 		studentService.addStudent(student);
 		
-		studentService.updateStudent(103,"Kumaran");
-		studentService.deleteStudent(101);
+		studentService.updateStudent(107,"Padma");
+//		studentService.deleteStudent(101);
 ////		
 //		studentService.getAllStudents().forEach((nstudent)->{
 //			System.out.println(nstudent.getName());

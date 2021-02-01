@@ -9,6 +9,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 
+import org.hibernate.envers.Audited;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +26,7 @@ import lombok.ToString;
 		attributeNodes = {
 				@NamedAttributeNode("students")
 		})
+@Audited
 public class Courses {
 
 	@Id
