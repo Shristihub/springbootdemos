@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +25,7 @@ public class Gadgets {
 	
 	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="student_id")
+	@JsonIgnore
 	private Student student;
 
 	public Gadgets(Integer gadgetId, String gadgetName, String gadgetModel) {

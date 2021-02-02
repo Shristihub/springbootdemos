@@ -11,6 +11,8 @@ import javax.persistence.NamedEntityGraph;
 
 import org.hibernate.envers.Audited;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,6 +36,7 @@ public class Courses {
 	private String courseName;
 	private double cost;
 	@ManyToMany(mappedBy="courses")//, fetch = FetchType.EAGER)
+	@JsonIgnore
 	private Set<Student> students;
 	
 	public Courses(Integer courseId, String courseName, double cost) {
