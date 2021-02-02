@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.studentapp.model.Student;
@@ -47,21 +48,21 @@ public class StudentController {
 		List<Student> studentList = studentService.getAllStudents();
 		return ResponseEntity.ok().body(studentList);
 	}
-	@GetMapping("/students-by-courses/{courseName}")
+	@GetMapping("/students-by-courses/{coursename}")
 	ResponseEntity<List<Student>> getByCourseName(@PathVariable("courseName")String name){
 		List<Student> studentList = studentService.getByCourseName(name);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("desc","By courses");
 		return ResponseEntity.ok().headers(headers).body(studentList);
 	}
-	@GetMapping("/students-by-courses-gadgets/{gadhetname}")
-	ResponseEntity<List<Student>> getByGadgets(@PathVariable("gadgetname") String gadget){
+	@GetMapping("/students-by-gadgets/")
+	ResponseEntity<List<Student>> getByGadgets(@RequestParam("gadgetname") String gadget){
 		List<Student> studentList = studentService.getByGadgets(gadget);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("desc","By gadgets");
 		return ResponseEntity.ok().headers(headers).body(studentList);
 	}
-	@GetMapping("/students-by-courses-gadgets/{courseName}/{gadhetname}")
+	@GetMapping("/students-by-courses-gadgets/{courseName}/{gadgetname}")
 	ResponseEntity<List<Student>> getByCourseGadget(@PathVariable("courseName")String cname,@PathVariable("gadgetname") String gadget){
 		List<Student> studentList = studentService.getByCourseGadget(cname, gadget);
 		HttpHeaders headers = new HttpHeaders();

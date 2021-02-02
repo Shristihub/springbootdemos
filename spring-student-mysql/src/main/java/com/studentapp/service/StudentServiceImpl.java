@@ -44,7 +44,7 @@ public class StudentServiceImpl implements StudentService{
 	public List<Student> getByCourseName(String coursename) {
 		List<Student> studentList = studentRepo.findByCourseName(coursename);;
 		if(studentList.isEmpty()) {
-			throw new StudentNotFoundException("student for city not found");
+			throw new StudentNotFoundException("student for courses not found");
 		}
 		return studentList;
 		
