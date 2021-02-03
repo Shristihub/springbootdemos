@@ -21,8 +21,8 @@ import com.studentapp.service.CourseService;
 import com.studentapp.service.GadgetService;
 import com.studentapp.service.StudentService;
 
-@RestController
-@RequestMapping("/students")
+//@RestController
+//@RequestMapping("/students")
 public class StudentHateosController {
 
 	@Autowired

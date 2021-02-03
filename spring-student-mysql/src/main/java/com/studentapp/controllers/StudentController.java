@@ -33,7 +33,7 @@ public class StudentController {
 	@GetMapping("/student-by-id/{id}")
 	ResponseEntity<Student>getStudentbyId(@PathVariable("id")Integer id){
 		Student student = studentService.getById(id);
-		return ResponseEntity.ok().body(student);
+		return ResponseEntity.accepted().body(student);
 	}
 	
 	@GetMapping("/students-by-city/{city}")
