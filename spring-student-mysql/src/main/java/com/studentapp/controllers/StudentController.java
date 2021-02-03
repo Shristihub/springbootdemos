@@ -48,7 +48,7 @@ public class StudentController {
 		List<Student> studentList = studentService.getAllStudents();
 		return ResponseEntity.ok().body(studentList);
 	}
-	@GetMapping("/students-by-courses/{coursename}")
+	@GetMapping("/students-by-courses/{courseName}")
 	ResponseEntity<List<Student>> getByCourseName(@PathVariable("courseName")String name){
 		List<Student> studentList = studentService.getByCourseName(name);
 		HttpHeaders headers = new HttpHeaders();
