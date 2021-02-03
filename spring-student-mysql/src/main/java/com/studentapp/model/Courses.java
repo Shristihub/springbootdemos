@@ -3,13 +3,13 @@ package com.studentapp.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 
 import org.hibernate.envers.Audited;
+import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,7 +29,7 @@ import lombok.ToString;
 				@NamedAttributeNode("students")
 		})
 @Audited
-public class Courses {
+public class Courses extends RepresentationModel<Courses>{
 
 	@Id
 	private Integer courseId;

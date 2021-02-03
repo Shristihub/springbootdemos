@@ -15,6 +15,9 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
+import org.springframework.hateoas.RepresentationModel;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,7 +32,7 @@ import lombok.NoArgsConstructor;
 		@NamedAttributeNode("gadgets"), @NamedAttributeNode("courses") })
 //@EntityListeners(value = StudentAuditListener.class)
 @Audited
-public class Student {// extends Auditable<String>{
+public class Student extends RepresentationModel<Student>{
 
 	@Id
 	private Integer studentId;
@@ -42,10 +45,12 @@ public class Student {// extends Auditable<String>{
 	@OneToMany(cascade = CascadeType.ALL) // ,fetch = FetchType.EAGER)
 	@JoinColumn(name = "student_id")
 	@NotAudited
+	@JsonIgnore
 	Set<Gadgets> gadgets;
 
 	@ManyToMany(cascade = CascadeType.ALL) // ,fetch = FetchType.EAGER)
 	@JoinTable(name = "student_courses", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "courses_id"))
+	@JsonIgnore
 	Set<Courses> courses;
 
 //	@PrePersist

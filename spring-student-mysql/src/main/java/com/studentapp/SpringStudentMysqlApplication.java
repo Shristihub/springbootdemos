@@ -50,23 +50,23 @@ public class SpringStudentMysqlApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		Address address= new Address(18,"Chennai","Kar");		
-		List<Gadgets> gadgets = Arrays.asList(new Gadgets(75,"Headphones","K90"),new Gadgets(76,"Laptop","T430"));
-		Set<Gadgets> gadgetList = new HashSet<>(gadgets);
+//		Address address= new Address(18,"Chennai","Kar");		
+//		List<Gadgets> gadgets = Arrays.asList(new Gadgets(75,"Headphones","K90"),new Gadgets(76,"Laptop","T430"));
+//		Set<Gadgets> gadgetList = new HashSet<>(gadgets);
+////		
+//		Courses course1 = new Courses(11,"AwS",2000);
+//		Courses course2 = new Courses(12,"azure",1200);
+////		Courses course3 = new Courses(9,"ML",3000);
 //		
-		Courses course1 = new Courses(11,"AwS",2000);
-		Courses course2 = new Courses(12,"azure",1200);
-//		Courses course3 = new Courses(9,"ML",3000);
-		
-//		Courses course1 = courseService.getById(6);
-//		Courses course2 = courseService.getById(8);
-		
-		Set<Courses> courseList = new HashSet<>(Arrays.asList(course1,course2));
-		
-		Student student =new Student(110,"Sasi",address,gadgetList,courseList);
-		studentService.addStudent(student);
-		
-		studentService.updateStudent(107,"Padma");
+////		Courses course1 = courseService.getById(6);
+////		Courses course2 = courseService.getById(8);
+//		
+//		Set<Courses> courseList = new HashSet<>(Arrays.asList(course1,course2));
+//		
+//		Student student =new Student(110,"Sasi",address,gadgetList,courseList);
+//		studentService.addStudent(student);
+//		
+//		studentService.updateStudent(107,"Padma");
 //		studentService.deleteStudent(101);
 ////		
 //		studentService.getAllStudents().forEach((nstudent)->{
