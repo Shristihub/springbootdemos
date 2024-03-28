@@ -1,0 +1,9 @@
+D:\2021\apps\stsexamples\springdemos23\spring-insuranceapp-restmybatis\src\main\java\com\insuranceapp\model\Insurance.java
+D:\2021\apps\stsexamples\springdemos23\spring-insuranceapp-restmybatis\src\main\java\com\insuranceapp\model\ApiErrors.java
+D:\2021\apps\stsexamples\springdemos23\spring-insuranceapp-restmybatis\src\main\java\com\insuranceapp\service\IInsuranceService.java
+D:\2021\apps\stsexamples\springdemos23\spring-insuranceapp-restmybatis\src\main\java\com\insuranceapp\controllers\InsuranceController.java
+D:\2021\apps\stsexamples\springdemos23\spring-insuranceapp-restmybatis\src\main\java\com\insuranceapp\exception\InsuranceNotFoundException.java
+D:\2021\apps\stsexamples\springdemos23\spring-insuranceapp-restmybatis\src\main\java\com\insuranceapp\exception\GlobalExceptionHandler.java
+D:\2021\apps\stsexamples\springdemos23\spring-insuranceapp-restmybatis\src\main\java\com\insuranceapp\repository\IInsuranceRepository.java
+D:\2021\apps\stsexamples\springdemos23\spring-insuranceapp-restmybatis\src\main\java\com\insuranceapp\service\InsuranceServiceImpl.java
+D:\2021\apps\stsexamples\springdemos23\spring-insuranceapp-restmybatis\src\main\java\com\insuranceapp\SpringInsuranceappRestApplication.java
